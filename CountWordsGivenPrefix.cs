@@ -18,3 +18,29 @@ public class Solution {
         return count;
     }
 }
+
+// Suppose Big-O was asked and a better runtime was desired. 
+// Another option would be to use binary search
+int countPrefixes(String prefix) {
+	int count = 0;
+    int leftElement = 0;
+	int rightElement = dictionary.Length;
+		
+	while (leftElement < rightElement) {
+	    string middleWordSubstring = dictionary[(leftElement + rightElement) / 2].substring(0, prefix.Length);
+
+	    if ( middleWordSubstring == prefix ) {
+	        leftElement = (leftElement + rightElement) / 2; //??
+	    }
+
+		if ( middleWordSubstring.compareTo(prefix) == -1 ) {
+			leftElement = (leftElement + rightElement) / 2;
+		} 
+		else if ( middleWordSubstring.compareTo(prefix) == 1 ) {
+			rightElement = (leftElement + rightElement) / 2;
+		} 
+		else {
+	        rightElement = (leftElement + rightElement) / 2;
+		}
+    }
+}

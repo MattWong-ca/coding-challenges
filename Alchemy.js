@@ -40,3 +40,19 @@ function playerHandScore(hand) {
 
     return sum;
 }
+
+// FIZZBUZZ
+
+function fizzBuzz(numbers) {
+    let finalString = "";
+    for (let i = 0; i < numbers.length; i++) {
+        if (numbers[i] % 3 == 0 && numbers[i] % 5 == 0) {
+            finalString = finalString + "fizzbuzz";
+        } else if ( numbers[i] % 5 == 0 ) {
+            finalString = finalString + "buzz";
+        } else if ( numbers[i] % 3 == 0 ) {
+            finalString = finalString + "fizz";
+        }
+    }
+    return finalString;
+}

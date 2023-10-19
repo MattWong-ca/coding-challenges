@@ -15,3 +15,27 @@ function maxProfit(prices: number[]): number {
     
     return counter;
 };
+
+// 268. Missing Number (WIP)
+
+function missingNumber(nums: number[]): number {
+    // Edge cases
+    // Empty array?
+    // Infinitely long array?
+
+    // Sort the array
+    // for loop to check if nums[i] + 1 and nums[i+1] are equal
+    // Nested loop takes time though, is there a faster way?
+
+    nums.sort()
+
+    for(let i = 0; i < nums.length; i++) {
+        if(nums.length == 1) {
+            return ;
+        }
+
+        if(nums[i] + 1 != nums[i+1]) {
+            return nums[i] + 1;
+        }
+    }
+};

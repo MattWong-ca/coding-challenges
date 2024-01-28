@@ -16,6 +16,36 @@ function maxProfit(prices: number[]): number {
     return counter;
 };
 
+// 217. Contains Duplicate
+
+// Initial naive solution that compares each value
+// with every other value in the array
+function containsDuplicate(nums: number[]): boolean {
+    for (let i = 0; i < nums.length; i++) {
+        for (let j = 0; j < nums.length; j++) {
+            if (nums[j] == nums[i] && i != j) {
+                return true;
+            }
+        }
+    }
+    return false;
+};
+
+// Better solution using a set to compare values
+function containsDuplicate(nums: number[]): boolean {
+    const seenNumbers = new Set<number>();
+
+    for (const num of nums) {
+        if (seenNumbers.has(num)) {
+            return true;
+        } else {
+            seenNumbers.add(num);
+        }
+    }
+    return false;
+};
+
+    
 // 268. Missing Number (WIP)
 
 function missingNumber(nums: number[]): number {

@@ -7,13 +7,23 @@ function solution(queries: string[][]): string[] {
             count.push(queries[i][1])
             solution.push("")
         } 
+        else if (queries[i][0] === "REMOVE") {
+            let g;
+            if (count.includes(queries[i][1])) {
+                g = count.indexOf(queries[i][1]);
+                count.splice(g, 1)
+                solution.push("true")
+            } else {
+                solution.push("false")
+            }
+        }
         else if (queries[i][0] === "EXISTS") {
             if (count.includes(queries[i][1])) {
                 solution.push("true")
             } else {
                 solution.push("false")
             }
-        }
+        } 
     }
     return solution;
 }

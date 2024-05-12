@@ -24,6 +24,27 @@ function solution(queries: string[][]): string[] {
                 solution.push("false")
             }
         } 
+        else if (queries[i][0] === "GET_NEXT") {
+            let greaterNumbers: number[] = [];
+            // Turn count array into number array so we can sort
+            const parsedCount = count.map( number => {
+                return parseInt(number);
+            })
+            
+            // If number in count is greater than input value, add it to new array
+            for(let j = 0; j < parsedCount.length; j++) {
+                if (parsedCount[j] > parseInt(queries[i][1])) {
+                    greaterNumbers.push(parsedCount[j]);
+                }
+            }
+            
+            if (greaterNumbers.length !== 0) {
+                greaterNumbers.sort((a, b) => a - b);
+                solution.push(greaterNumbers[0].toString())
+            } else {
+                solution.push("")
+            }
+        } 
     }
     return solution;
 }
@@ -33,15 +54,18 @@ function solution(queries: string[][]): string[] {
 queries = [
     ["ADD", "1"],
     ["ADD", "2"],
-    ["ADD", "5"],
     ["ADD", "2"],
-    ["EXISTS", "2"],
-    ["EXISTS", "5"],
-    ["EXISTS", "1"],
-    ["EXISTS", "4"],
-    ["EXISTS", "3"],
-    ["EXISTS", "0"]
+    ["ADD", "4"],
+    ["GET_NEXT", "1"],
+    ["GET_NEXT", "2"],
+    ["GET_NEXT", "3"],
+    ["GET_NEXT", "4"],
+    ["REMOVE", "2"],
+    ["GET_NEXT", "1"],
+    ["GET_NEXT", "2"],
+    ["GET_NEXT", "3"],
+    ["GET_NEXT", "4"]
 ]
 
-solution(queries) = ["", "", "", "", "true", "true", "true", "false", "false", "false"]
+solution(queries) = ["", "", "", "", "2", "4", "4", "", "true", "2", "4", "4", ""]
 */

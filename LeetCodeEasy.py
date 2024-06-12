@@ -19,3 +19,15 @@ class Solution:
                 max_profit = price - min_price
         
         return max_profit
+
+# 217. Contains Duplicate
+class Solution:
+    def containsDuplicate(self, nums: List[int]) -> bool:
+        seen = set()
+        for num in nums:
+            if num in seen:
+                return True
+            else:
+                seen.add(num)
+        
+        return False

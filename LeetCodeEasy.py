@@ -31,3 +31,12 @@ class Solution:
                 seen.add(num)
         
         return False
+
+# 242. Valid Anagram
+class Solution:
+    def isAnagram(self, s: str, t: str) -> bool:
+        s_array = list(s)
+        s_array.sort()
+        t_array = list(t)
+        t_array.sort()
+        return s_array == t_array

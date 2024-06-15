@@ -6,6 +6,30 @@ class Solution:
                 if target - nums[j] == nums[i] and i != j:
                     return [i,j]
 
+# 20. Valid Parentheses (WORK IN PROGRESS)
+class Solution:
+    def isValid(self, s: str) -> bool:
+        brackets = []
+        sq_brackets = []
+        curly_brackets = []
+        char_array = list(s)
+        for char in char_array:
+            if char == '(':
+                brackets.append('(')
+            elif char == '[':
+                sq_brackets.append('[')
+            elif char == '{':
+                curly_brackets.append('{')
+            
+            elif char == ')' and not len(brackets) == 0:
+                brackets.pop()
+            elif char == ']' and not len(sq_brackets) == 0:
+                sq_brackets.pop()
+            elif char == '}' and not len(curly_brackets) == 0:
+                curly_brackets.pop()
+        
+        return len(brackets) == 0 and len(sq_brackets) == 0 and len(curly_brackets) == 0
+
 # 121. Best Time to Buy and Sell Stock
 class Solution:
     def maxProfit(self, prices: List[int]) -> int:

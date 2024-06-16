@@ -44,6 +44,13 @@ class Solution:
         
         return max_profit
 
+# 125. Valid Palindrome
+class Solution:
+    def isPalindrome(self, s: str) -> bool:
+        clean_s = ''.join(filter(str.isalnum, s)).lower()
+        reversed_s = ''.join(reversed(clean_s))
+        return clean_s == reversed_s
+
 # 217. Contains Duplicate
 class Solution:
     def containsDuplicate(self, nums: List[int]) -> bool:

@@ -35,3 +35,21 @@ class Solution:
                 my_dict[x].append(s)
         
         return list(my_dict.values())
+
+
+# 238. Product of Array Except Self
+class Solution:
+    def productExceptSelf(self, nums: List[int]) -> List[int]:
+        products = []
+        for i in nums:
+            print(i)
+            product = 0
+            for j in nums:
+                print(j)
+                if i is not j and product is not 0:
+                    product = product * j
+                else:
+                    product = j
+            products.append(product)
+
+        print(products)

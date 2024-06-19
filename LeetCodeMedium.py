@@ -41,13 +41,13 @@ class Solution:
 class Solution:
     def productExceptSelf(self, nums: List[int]) -> List[int]:
         products = []
-        for i in nums:
-            print("First array: ", i)
+        for i in range(len(nums)):
+            # print("First array: ", nums[i])
             product = 1
-            for j in nums:
+            for j in range(len(nums)):
                 if i != j:
-                    print(j)
-                    product = product * j
+                    # print(nums[j])
+                    product = product * nums[j]
             products.append(product)
 
         return products 

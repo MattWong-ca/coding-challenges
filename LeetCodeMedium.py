@@ -37,19 +37,17 @@ class Solution:
         return list(my_dict.values())
 
 
-# 238. Product of Array Except Self
+# 238. Product of Array Except Self - WORK IN PROGRESS
 class Solution:
     def productExceptSelf(self, nums: List[int]) -> List[int]:
         products = []
         for i in nums:
-            print(i)
-            product = 0
+            print("First array: ", i)
+            product = 1
             for j in nums:
-                print(j)
-                if i is not j and product is not 0:
+                if i != j:
+                    print(j)
                     product = product * j
-                else:
-                    product = j
             products.append(product)
 
-        print(products)
+        return products 

@@ -38,6 +38,7 @@ class Solution:
 
 
 # 238. Product of Array Except Self - WORK IN PROGRESS
+# This solution exceeds time limit, need a better one
 class Solution:
     def productExceptSelf(self, nums: List[int]) -> List[int]:
         products = []
@@ -51,3 +52,7 @@ class Solution:
             products.append(product)
 
         return products 
+# 1. Use left_product and right_product arrays
+# 2. for left side, each time you iterate right, you use i-1 value to get product
+#    eg. [1,2,3,4,5,6,7], on i = 3, multiply nums[2] * left[2]
+# 3. do something similar for RHS, the return product of LHS and RHS

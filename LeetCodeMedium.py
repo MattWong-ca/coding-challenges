@@ -41,17 +41,32 @@ class Solution:
 # This solution exceeds time limit, need a better one
 class Solution:
     def productExceptSelf(self, nums: List[int]) -> List[int]:
-        products = []
-        for i in range(len(nums)):
-            # print("First array: ", nums[i])
-            product = 1
-            for j in range(len(nums)):
-                if i != j:
-                    # print(nums[j])
-                    product = product * nums[j]
-            products.append(product)
+        # Ex: [1,2,3,4,5] --> length = 5
+        length = len(nums)
 
-        return products 
+        # Create LHS, RHS, and final array with same length as nums
+        # Ex: [1,1,1,1,1]
+        prefix_products = [1] * length
+        suffix_products = [1] * length
+        result = [1] * length
+
+        for i in range(1, length):
+            # Ex: for i = 1, prefix_products[0] * nums[0] = 1
+            # Ex: for i = 2, prefix_products[1] * nums[1] = 2
+            # Ex: for i = 3, prefix_products[2] * nums[2] = 6
+            prefix_products[i] = prefix_products[i - 1] * nums[i - 1]
+            
+        # products = []
+        # for i in range(len(nums)):
+        #     # print("First array: ", nums[i])
+        #     product = 1
+        #     for j in range(len(nums)):
+        #         if i != j:
+        #             # print(nums[j])
+        #             product = product * nums[j]
+        #     products.append(product)
+
+        # return products 
 # 1. Use left_product and right_product arrays
 # 2. for left side, each time you iterate right, you use i-1 value to get product
 #    eg. [1,2,3,4,5,6,7], on i = 3, multiply nums[2] * left[2]

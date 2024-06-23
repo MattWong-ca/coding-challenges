@@ -2,16 +2,26 @@
 # TO DO: make solution work for not just the substring that start at index 0
 class Solution:
     def lengthOfLongestSubstring(self, s: str) -> int:
-        length = 0
-        array = set()
-        for char in s:
-            if char in array:
-                break
-            else:
-                array.add(char)
-                length = length + 1
-        
-        return length
+        maxLen = 1
+        seen = []
+        s_chars = list(s)
+
+        for i in range(len(s_chars)):
+            print("I: ", i)
+            seen.append(s_chars[i])
+            for j in range(len(s_chars)):
+                if j > i:
+                    print(j)
+                    if s_chars[j] not in seen:
+                        seen.append(s_chars[j])
+                        if len(seen) > maxLen:
+                            maxLen = len(seen)
+                    else:
+                        seen = []
+
+        print(seen)
+        print(maxLen)
+        return maxLen
 
 # 49. Group Anagrams
 class Solution:

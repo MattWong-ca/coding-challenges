@@ -37,8 +37,7 @@ class Solution:
         return list(my_dict.values())
 
 
-# 238. Product of Array Except Self - WORK IN PROGRESS
-# This solution exceeds time limit, need a better one
+# 238. Product of Array Except Self
 class Solution:
     def productExceptSelf(self, nums: List[int]) -> List[int]:
         # Ex: [1,2,3,4,5] --> length = 5
@@ -50,24 +49,21 @@ class Solution:
         suffix_products = [1] * length
         result = [1] * length
 
+        # After the loop we get prefix_products = [1, 1, 2, 6, 24]
         for i in range(1, length):
             # Ex: for i = 1, prefix_products[0] * nums[0] = 1
             # Ex: for i = 2, prefix_products[1] * nums[1] = 2
             # Ex: for i = 3, prefix_products[2] * nums[2] = 6
             prefix_products[i] = prefix_products[i - 1] * nums[i - 1]
-            
-        # products = []
-        # for i in range(len(nums)):
-        #     # print("First array: ", nums[i])
-        #     product = 1
-        #     for j in range(len(nums)):
-        #         if i != j:
-        #             # print(nums[j])
-        #             product = product * nums[j]
-        #     products.append(product)
 
-        # return products 
-# 1. Use left_product and right_product arrays
-# 2. for left side, each time you iterate right, you use i-1 value to get product
-#    eg. [1,2,3,4,5,6,7], on i = 3, multiply nums[2] * left[2]
-# 3. do something similar for RHS, the return product of LHS and RHS
+        # After the loop we get suffix_products = [120, 60, 20, 5, 1]
+        for i in range(length-2, -1, -1):
+            # Ex: for i = 3, suffix_products[4] * nums[4] = 5
+            # Ex: for i = 2, suffix_products[3] * nums[3] = 20
+            suffix_products[i] = suffix_products[i + 1] * nums[i + 1]
+
+        # Multiply each prefix with suffix and add product to result array
+        for i in range(0, length):
+            result[i] = prefix_products[i] * suffix_products[i]
+
+        return result

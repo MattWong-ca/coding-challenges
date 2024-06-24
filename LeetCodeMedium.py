@@ -1,13 +1,15 @@
 # 3. Longest Substring Without Repeating Characters
-# TO DO: make solution work for not just the substring that start at index 0
 class Solution:
     def lengthOfLongestSubstring(self, s: str) -> int:
+        if len(s) == 0:
+            return 0
+
         maxLen = 1
-        seen = []
         s_chars = list(s)
 
         for i in range(len(s_chars)):
-            print("I: ", i)
+            seen = []
+            # print("I: ", i)
             seen.append(s_chars[i])
             for j in range(len(s_chars)):
                 if j > i:
@@ -19,8 +21,7 @@ class Solution:
                     else:
                         seen = []
 
-        print(seen)
-        print(maxLen)
+        # print(maxLen)
         return maxLen
 
 # 49. Group Anagrams

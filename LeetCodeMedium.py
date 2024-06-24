@@ -11,15 +11,14 @@ class Solution:
             seen = []
             # print("I: ", i)
             seen.append(s_chars[i])
-            for j in range(len(s_chars)):
-                if j > i:
-                    print(j)
-                    if s_chars[j] not in seen:
-                        seen.append(s_chars[j])
-                        if len(seen) > maxLen:
-                            maxLen = len(seen)
-                    else:
-                        seen = []
+            for j in range(i+1, len(s_chars)):
+                # print(j)
+                if s_chars[j] not in seen:
+                    seen.append(s_chars[j])
+                    if len(seen) > maxLen:
+                        maxLen = len(seen)
+                else:
+                    seen = []
 
         # print(maxLen)
         return maxLen

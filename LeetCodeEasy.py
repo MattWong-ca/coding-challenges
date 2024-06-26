@@ -52,13 +52,20 @@ class Solution:
         return clean_s == reversed_s
 
 # 206. Reverse Linked List 
+# Visualization: https://www.youtube.com/watch?v=TSDl7sRxWdU&ab_channel=QuinstonPimenta
 class Solution:
     def reverseList(self, head: Optional[ListNode]) -> Optional[ListNode]:
-        # in the loop...
-        # next = curr.next
-        # curr.next = prev
-        # prev = curr
-        # curr = next
+        prev = None
+        curr = head
+        next = None
+
+        while curr is not None:
+            next = curr.next
+            curr.next = prev
+            prev = curr
+            curr = next
+
+        return prev
 
 # 217. Contains Duplicate
 class Solution:

@@ -51,6 +51,15 @@ class Solution:
         reversed_s = ''.join(reversed(clean_s))
         return clean_s == reversed_s
 
+# 206. Reverse Linked List 
+class Solution:
+    def reverseList(self, head: Optional[ListNode]) -> Optional[ListNode]:
+        # in the loop...
+        # next = curr.next
+        # curr.next = prev
+        # prev = curr
+        # curr = next
+
 # 217. Contains Duplicate
 class Solution:
     def containsDuplicate(self, nums: List[int]) -> bool:

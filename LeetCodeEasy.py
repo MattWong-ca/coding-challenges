@@ -6,17 +6,17 @@ class Solution:
                 if target - nums[j] == nums[i] and i != j:
                     return [i,j]
 
-# 14. Longest Common Prefix - WORK IN PROGRESS
+# 14. Longest Common Prefix
 class Solution:
     def longestCommonPrefix(self, strs: List[str]) -> str:
-        prefixLetters = []
+        prefixLetters = ""
         for i in range(len(strs[0])):
             for word in strs[1:]:
-                if i < len(min(strs[0], word)):
-                    # if word[i] == strs[0][i]:
-                    #     array.append(strs[0][i])
-                    # else:
-                    #     return "".join(array)
+                if i >= len(min(strs[0], word)) or word[i] != strs[0][i]:
+                    return prefixLetters
+            prefixLetters = prefixLetters + strs[0][i]
+
+        return prefixLetters
 
 # 20. Valid Parentheses (WORK IN PROGRESS)
 class Solution:

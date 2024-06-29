@@ -9,13 +9,14 @@ class Solution:
 # 14. Longest Common Prefix - WORK IN PROGRESS
 class Solution:
     def longestCommonPrefix(self, strs: List[str]) -> str:
-        # iterate through words
-        # for 1st word, add 1st letter to another array 
-        # if 1st letter is same in other words, keep going, if not, break
-        firstLetter = strs[0][0]
-        letters = [firstLetter]
-        for i in range(len(strs)):
-            if strs[]
+        prefixLetters = []
+        for i in range(len(strs[0])):
+            for word in strs[1:]:
+                if i < len(min(strs[0], word)):
+                    # if word[i] == strs[0][i]:
+                    #     array.append(strs[0][i])
+                    # else:
+                    #     return "".join(array)
 
 # 20. Valid Parentheses (WORK IN PROGRESS)
 class Solution:

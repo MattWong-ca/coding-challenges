@@ -42,6 +42,18 @@ class Solution:
         
         return len(brackets) == 0 and len(sq_brackets) == 0 and len(curly_brackets) == 0
 
+# 26. Remove Duplicates from Sorted Array
+class Solution:
+    def removeDuplicates(self, nums: List[int]) -> int:
+        unique_numbers = set(nums)
+        unique_numbers_list = list(unique_numbers)
+        unique_numbers_list.sort()
+        
+        for i in range(len(unique_numbers_list)):
+            nums[i] = unique_numbers_list[i]
+        
+        return len(unique_numbers)
+
 # 121. Best Time to Buy and Sell Stock
 class Solution:
     def maxProfit(self, prices: List[int]) -> int:

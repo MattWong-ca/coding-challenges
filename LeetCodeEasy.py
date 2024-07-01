@@ -21,26 +21,17 @@ class Solution:
 # 20. Valid Parentheses (WORK IN PROGRESS)
 class Solution:
     def isValid(self, s: str) -> bool:
-        brackets = []
-        sq_brackets = []
-        curly_brackets = []
-        char_array = list(s)
-        for char in char_array:
-            if char == '(':
-                brackets.append('(')
-            elif char == '[':
-                sq_brackets.append('[')
-            elif char == '{':
-                curly_brackets.append('{')
-            
-            elif char == ')' and not len(brackets) == 0:
-                brackets.pop()
-            elif char == ']' and not len(sq_brackets) == 0:
-                sq_brackets.pop()
-            elif char == '}' and not len(curly_brackets) == 0:
-                curly_brackets.pop()
+        brackets = {"(": ")", "{": "}", "[": "]"}
+        stack = []
+
+        for bracket in s:
+            if bracket in brackets:
+                stack.append(bracket)
+            elif bracket in brackets.values():
+                if not stack or brackets[stack.pop()] != bracket:
+                    return False
         
-        return len(brackets) == 0 and len(sq_brackets) == 0 and len(curly_brackets) == 0
+        return len(stack) == 0
 
 # 26. Remove Duplicates from Sorted Array
 class Solution:

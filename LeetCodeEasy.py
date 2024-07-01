@@ -18,7 +18,7 @@ class Solution:
 
         return prefixLetters
 
-# 20. Valid Parentheses (WORK IN PROGRESS)
+# 20. Valid Parentheses
 class Solution:
     def isValid(self, s: str) -> bool:
         brackets = {"(": ")", "{": "}", "[": "]"}

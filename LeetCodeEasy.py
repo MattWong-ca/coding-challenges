@@ -45,6 +45,31 @@ class Solution:
         
         return len(unique_numbers)
 
+# 118. Pascal's Triangle
+class Solution:
+    def generate(self, numRows: int) -> List[List[int]]:
+        triangle = []
+        triangle.append([1])
+
+        for rowNumber in range(1, numRows):
+            current_row = [0] * (rowNumber + 1)
+            current_row[0] = 1
+            current_row[-1] = 1
+
+            for positionIndex in range(1, len(current_row)-1):
+                current_row[positionIndex] = triangle[rowNumber-1][positionIndex-1] + triangle[rowNumber-1][positionIndex]
+
+            triangle.append(current_row)
+        
+        return triangle
+    
+    # Example rowNumber = 2, positionIndex = 1
+    # [0,0,0]
+    # [1,0,1]
+    # current_row[1] = triangle[1][0] + triangle[1][1]
+    # current_row[1] = 1 + 1 = 2
+    # [1,2,1]
+
 # 121. Best Time to Buy and Sell Stock
 class Solution:
     def maxProfit(self, prices: List[int]) -> int:

@@ -48,16 +48,12 @@ class Solution:
 # 58. Length of Last Word
 class Solution:
     def lengthOfLastWord(self, s: str) -> int:
-        i = len(s) - 1
-        
-        while i >= 0 and s[i] == " ":
-            i = i - 1
-
-        j = i
-        while s[j] != " " and j >= 0:
-            j = j - 1
-
-        return i - j
+        # Removes trailing whitespaces
+        trimmed_s = s.strip()
+        # Splits the words between the spaces into array of strings
+        words = trimmed_s.split(" ")
+        # Returns length of last word
+        return len(words[-1])
 
 # 118. Pascal's Triangle
 class Solution:

@@ -55,6 +55,26 @@ class Solution:
         # Returns length of last word
         return len(words[-1])
 
+# 66. Plus One
+class Solution:
+    def plusOne(self, digits: List[int]) -> List[int]:
+        # List of int --> list of char
+        char_list = [format(x, 'd') for x in digits]
+        # List of char --> string
+        digits_string = ''.join(char_list)
+        # String --> int
+        digits_int = int(digits_string)
+        # Add 1 to int
+        plus_one = digits_int + 1
+        # Int --> string
+        plus_one_str = str(plus_one)
+        # String --> char array
+        plus_one_char_list = list(plus_one_str)
+        # List of char --> list of int
+        plus_one_int_list = [int(x) for x in plus_one_char_list]
+        
+        return plus_one_int_list
+
 # 118. Pascal's Triangle
 class Solution:
     def generate(self, numRows: int) -> List[List[int]]:

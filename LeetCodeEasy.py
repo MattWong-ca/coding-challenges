@@ -45,6 +45,20 @@ class Solution:
         
         return len(unique_numbers)
 
+# 58. Length of Last Word
+class Solution:
+    def lengthOfLastWord(self, s: str) -> int:
+        i = len(s) - 1
+        
+        while i >= 0 and s[i] == " ":
+            i = i - 1
+
+        j = i
+        while s[j] != " " and j >= 0:
+            j = j - 1
+
+        return i - j
+
 # 118. Pascal's Triangle
 class Solution:
     def generate(self, numRows: int) -> List[List[int]]:

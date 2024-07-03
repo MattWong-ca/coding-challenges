@@ -121,6 +121,11 @@ class Solution:
         reversed_s = ''.join(reversed(clean_s))
         return clean_s == reversed_s
 
+# 136. Single Number
+class Solution:
+    def singleNumber(self, nums: List[int]) -> int:
+        return reduce(xor, nums)
+
 # 206. Reverse Linked List 
 # Visualization: https://www.youtube.com/watch?v=TSDl7sRxWdU&ab_channel=QuinstonPimenta
 class Solution:

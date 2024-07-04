@@ -162,3 +162,24 @@ class Solution:
         t_array = list(t)
         t_array.sort()
         return s_array == t_array
+
+# 500. Keyboard Row
+class Solution:
+    def findWords(self, words: List[str]) -> List[str]:
+        one_row_words = []
+        first_row = list("qwertyuiop")
+        second_row = list("asdfghjkl")
+        third_row = list("zxcvbnm")
+
+        # for loop in 1st row
+        for word in words:
+            lower_case_word = word.lower()
+            for i in range(len(lower_case_word)):
+                if lower_case_word[i] not in second_row:
+                    break     
+        # one_row_words.append(word)
+        # for loop in 2nd row
+        # for loop in 3rd row
+
+        print(one_row_words)
+        return one_row_words

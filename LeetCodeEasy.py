@@ -171,15 +171,31 @@ class Solution:
         second_row = list("asdfghjkl")
         third_row = list("zxcvbnm")
 
-        # for loop in 1st row
         for word in words:
             lower_case_word = word.lower()
             for i in range(len(lower_case_word)):
-                if lower_case_word[i] not in second_row:
-                    break     
-        # one_row_words.append(word)
-        # for loop in 2nd row
-        # for loop in 3rd row
+                if lower_case_word[i] in first_row:
+                    if i == len(lower_case_word) - 1:
+                        one_row_words.append(word)
+                else:
+                    break
 
-        print(one_row_words)
+        for word in words:
+            lower_case_word = word.lower()
+            for i in range(len(lower_case_word)):
+                if lower_case_word[i] in second_row:
+                    if i == len(lower_case_word) - 1:
+                        one_row_words.append(word)
+                else:
+                    break
+
+        for word in words:
+            lower_case_word = word.lower()
+            for i in range(len(lower_case_word)):
+                if lower_case_word[i] in third_row:
+                    if i == len(lower_case_word) - 1:
+                        one_row_words.append(word)
+                else:
+                    break
+
         return one_row_words

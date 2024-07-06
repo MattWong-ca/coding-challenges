@@ -23,6 +23,23 @@ class Solution:
         # print(maxLen)
         return maxLen
 
+# 11. Container With Most Water (WORK IN PROGRESS)
+class Solution:
+    def maxArea(self, height: List[int]) -> int:
+        # Naive solution
+        # Go through a nested for loop
+        # Outer loop i
+        # Inner loop j
+        # multiply j-i and min of (height[i] and height[j])
+        largest_area = 0
+        for i in range(len(height)):
+            for j in range(i, len(height)):
+                current_area = (j-i) * min(height[i], height[j])
+                if current_area > largest_area:
+                    largest_area = current_area
+        
+        return largest_area
+
 # 49. Group Anagrams
 class Solution:
     def groupAnagrams(self, strs: List[str]) -> List[List[str]]:

@@ -45,6 +45,16 @@ class Solution:
         
         return len(unique_numbers)
 
+# 35. Search Insert Position
+class Solution:
+    def searchInsert(self, nums: List[int], target: int) -> int:
+        if target in nums: 
+            return nums.index(target)
+        else:
+            nums.append(target)
+            nums.sort()
+            return nums.index(target)
+
 # 58. Length of Last Word
 class Solution:
     def lengthOfLastWord(self, s: str) -> int:

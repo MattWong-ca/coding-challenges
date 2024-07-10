@@ -66,6 +66,18 @@ class Solution:
         
         return list(my_dict.values())
 
+# 53. Maximum Subarray (WORK IN PROGRESS) 
+class Solution:
+    def maxSubArray(self, nums: List[int]) -> int:
+        current_sum = nums[0]
+        max_sum = nums[0]
+        # Read up on Kadane's algo
+        # set a current max and max equal to nums[0]
+        # Iterate through the array
+        # If negative, we set something to zero and restart adding them sums?
+        # For every num we go through, if it's positive then we can keep adding, but if negative, 
+        # we don't want to add it to array so we keep going
+        # ???
 
 # 238. Product of Array Except Self
 class Solution:

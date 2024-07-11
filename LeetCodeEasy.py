@@ -85,6 +85,26 @@ class Solution:
         
         return plus_one_int_list
 
+# 70. Climbing Stairs (WORK IN PROGRESS)
+class Solution:
+    def climbStairs(self, n: int) -> int:
+        # Base cases
+        if n == 1:
+            return 1
+        if n == 2:
+            return 2
+
+        # return sum of (n-1) + (n-2)
+        first = 1
+        second = 2
+
+        for i in (3, n-1):
+            current = first + second
+            first = second
+            second = current
+
+        return second
+
 # 118. Pascal's Triangle
 class Solution:
     def generate(self, numRows: int) -> List[List[int]]:

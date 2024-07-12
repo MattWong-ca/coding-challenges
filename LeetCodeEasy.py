@@ -156,6 +156,25 @@ class Solution:
     def singleNumber(self, nums: List[int]) -> int:
         return reduce(xor, nums)
 
+# 168. Excel Sheet Column Title (WORK IN PROGRESS)
+class Solution:
+    def convertToTitle(self, columnNumber: int) -> str:
+        result = []
+        while columnNumber > 0:
+            # Adjust for 0-indexing
+            columnNumber -= 1
+
+            remainder = columnNumber % 26
+
+            # ord('A') --> gets ASCII of A, which is 65
+            # chr() --> gets char given ASCII value
+            result.append(chr(remainder + ord('A')))
+
+            # Gets floor value of column_number / 26
+            columnNumber //= 26
+        
+        return ''.join(result[::-1])
+
 # 206. Reverse Linked List 
 # Visualization: https://www.youtube.com/watch?v=TSDl7sRxWdU&ab_channel=QuinstonPimenta
 class Solution:

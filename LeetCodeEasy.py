@@ -175,6 +175,17 @@ class Solution:
         
         return ''.join(result[::-1])
 
+# 202. Happy Number
+class Solution:
+    def isHappy(self, n: int) -> bool:
+        while n != 1:
+            sum = 0
+            array = [int(digit) for digit in str(n)]
+            for digit in array:
+                sum = sum + (digit * digit)
+            n = sum
+        return True
+
 # 206. Reverse Linked List 
 # Visualization: https://www.youtube.com/watch?v=TSDl7sRxWdU&ab_channel=QuinstonPimenta
 class Solution:

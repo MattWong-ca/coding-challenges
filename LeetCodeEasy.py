@@ -45,6 +45,15 @@ class Solution:
         
         return len(unique_numbers)
 
+# 27. Remove Element
+class Solution:
+    def removeElement(self, nums: List[int], val: int) -> int:
+        for i in range(len(nums)-1, -1, -1):
+            if nums[i] == val:
+                nums.pop(i)
+        
+        return len(nums)
+
 # 35. Search Insert Position
 class Solution:
     def searchInsert(self, nums: List[int], target: int) -> int:

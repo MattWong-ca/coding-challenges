@@ -94,6 +94,18 @@ class Solution:
         
         return plus_one_int_list
 
+# 69. Sqrt(x) (WORK IN PROGRESS)
+class Solution:
+    def mySqrt(self, x: int) -> int:
+        square_root = 0
+        numbers = list(range(1, x + 1))
+        
+        for i in range(len(numbers)):
+            if numbers[i] * numbers[i] >= x:
+                square_root = numbers[i]
+
+        return square_root
+
 # 70. Climbing Stairs (WORK IN PROGRESS)
 class Solution:
     def climbStairs(self, n: int) -> int:

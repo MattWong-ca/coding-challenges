@@ -280,3 +280,17 @@ class Solution:
                     break
 
         return one_row_words
+
+# 1791. Find Center of Star Graph
+class Solution:
+    def findCenter(self, edges: List[List[int]]) -> int:
+        # Since it's a star graph, the center node will be common in every subarray
+
+        # Turn the first subarray into a set so we can use .intersection()
+        first_edge = set(edges[0])
+        second_edge = edges[1]
+
+        # Find common values between first and second subarray, turn into list
+        common_elements = list(first_edge.intersection(second_edge))
+        
+        return common_elements[0]

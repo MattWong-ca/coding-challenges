@@ -292,6 +292,35 @@ class Solution:
 
         # Iterate through counts, if 1st array is zero and 2nd is n-1 for someone, return that
 
+
+        # If the 2nd element in each subarray all equal n, and the first element is never n
+        
+        first = []
+        second = []
+
+        first_bool = True
+        second_bool = True
+        for arr in trust:
+            first.append(arr[0])
+            second.append(arr[1])
+
+        print(first)
+        print(second)
+
+        for num in first:
+            if num == n:
+                first_bool = False
+                print("yes")
+        print(first_bool)
+        for num in second:
+            if num != n:
+                second_bool = False
+
+        if first_bool == True and second_bool == True:
+            return n
+        else:
+            return -1  
+
 # 1791. Find Center of Star Graph
 class Solution:
     def findCenter(self, edges: List[List[int]]) -> int:

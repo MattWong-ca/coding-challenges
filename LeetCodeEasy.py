@@ -281,6 +281,17 @@ class Solution:
 
         return one_row_words
 
+# 997. Find the Town Judge
+class Solution:
+    def findJudge(self, n: int, trust: List[List[int]]) -> int:
+        # Judge will never show up as first in trust-pair
+        # Judge is trusted by n-1 others
+
+        # Initialize 2 arrays for keeping count of each person's trust and trusted
+        # Iterate through trust, and add counts
+
+        # Iterate through counts, if 1st array is zero and 2nd is n-1 for someone, return that
+
 # 1791. Find Center of Star Graph
 class Solution:
     def findCenter(self, edges: List[List[int]]) -> int:

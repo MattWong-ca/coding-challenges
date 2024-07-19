@@ -292,34 +292,23 @@ class Solution:
 
         # Iterate through counts, if 1st array is zero and 2nd is n-1 for someone, return that
 
-
         # If the 2nd element in each subarray all equal n, and the first element is never n
-        
-        first = []
-        second = []
 
-        first_bool = True
-        second_bool = True
-        for arr in trust:
-            first.append(arr[0])
-            second.append(arr[1])
+        trust_counts = [0] * (n + 1)
+        trusted_by = [0] * (n + 1)
 
-        print(first)
-        print(second)
+        for a, b in trust: 
+            trust_counts[a] += 1
+            trusted_by[b] += 1
 
-        for num in first:
-            if num == n:
-                first_bool = False
-                print("yes")
-        print(first_bool)
-        for num in second:
-            if num != n:
-                second_bool = False
+        print(trust_counts)
+        print(trusted_by)
 
-        if first_bool == True and second_bool == True:
-            return n
-        else:
-            return -1  
+        for i in range(1, n+1):
+            if trust_counts[i] == 0 and trusted_by[i] == n - 1:
+                return i
+
+        return -1 
 
 # 1791. Find Center of Star Graph
 class Solution:

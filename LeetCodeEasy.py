@@ -126,6 +126,19 @@ class Solution:
 
         return second
 
+# 104. Maximum Depth of Binary Tree
+class Solution:
+    # Ex: [1,null,2]
+    def maxDepth(self, root: Optional[TreeNode]) -> int:
+        if root is None: 
+            return 0
+        
+        # l = 0, r = 1
+        l, r = self.maxDepth(root.left), self.maxDepth(root.right)
+
+        # Returns 2
+        return 1 + max(l, r)
+
 # 118. Pascal's Triangle
 class Solution:
     def generate(self, numRows: int) -> List[List[int]]:

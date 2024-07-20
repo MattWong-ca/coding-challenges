@@ -284,31 +284,27 @@ class Solution:
 # 997. Find the Town Judge
 class Solution:
     def findJudge(self, n: int, trust: List[List[int]]) -> int:
-        # Judge will never show up as first in trust-pair
-        # Judge is trusted by n-1 others
+        # Judge trusts nobody --> will never show up as first in trust-pair
+        # Judge is trusted by everyone except themself --> n-1 others
 
-        # Initialize 2 arrays for keeping count of each person's trust and trusted
-        # Iterate through trust, and add counts
-
-        # Iterate through counts, if 1st array is zero and 2nd is n-1 for someone, return that
-
-        # If the 2nd element in each subarray all equal n, and the first element is never n
-
+        # Initialize lists with size n+1 (to ignore 0-indexing)
+        # Index positions correlate with person's label (n)
         trust_counts = [0] * (n + 1)
         trusted_by = [0] * (n + 1)
 
+        # Ex: in [1,2] --> a = 1, b = 2
         for a, b in trust: 
+            # Ex: if a = 1, value at index 1 of trust_counts is incremented
             trust_counts[a] += 1
             trusted_by[b] += 1
 
-        print(trust_counts)
-        print(trusted_by)
-
+        # Go through all possible people
         for i in range(1, n+1):
+            # If their trust_count is 0 and they're trusted by n-1 people, they're the judge
             if trust_counts[i] == 0 and trusted_by[i] == n - 1:
                 return i
 
-        return -1 
+        return -1
 
 # 1791. Find Center of Star Graph
 class Solution:

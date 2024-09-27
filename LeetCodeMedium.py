@@ -79,6 +79,17 @@ class Solution:
         # we don't want to add it to array so we keep going
         # ???
 
+# 151. Reverse Words in a String
+class Solution:
+    def reverseWords(self, s: str) -> str:
+        reversedWords = []
+
+        words = s.split()
+        for word in reversed(words):
+            reversedWords.append(word)
+        
+        return ' '.join(reversedWords)
+
 # 238. Product of Array Except Self
 class Solution:
     def productExceptSelf(self, nums: List[int]) -> List[int]:

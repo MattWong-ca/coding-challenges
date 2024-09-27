@@ -224,6 +224,21 @@ class Solution:
         
         return ''.join(result[::-1])
 
+# 169. Majority Element
+class Solution:
+    def majorityElement(self, nums: List[int]) -> int:
+        dict = {}
+        for num in range(len(nums)):
+            if nums[num] in dict:
+                print(nums[num])
+                dict[nums[num]] += 1
+            else:
+                dict[nums[num]] = 1
+        
+        for value in dict:
+            if dict[value] > (len(nums)/2):
+                return value
+
 # 202. Happy Number
 class Solution:
     def isHappy(self, n: int) -> bool:

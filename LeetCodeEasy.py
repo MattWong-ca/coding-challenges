@@ -362,3 +362,9 @@ class Solution:
         common_elements = list(first_edge.intersection(second_edge))
         
         return common_elements[0]
+
+# 1971. Find if Path Exists in Graph (WIP)
+class Solution:
+    def validPath(self, n: int, edges: List[List[int]], source: int, destination: int) -> bool:
+        if source == destination:
+            return True

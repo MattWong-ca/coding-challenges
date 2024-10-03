@@ -363,8 +363,33 @@ class Solution:
         
         return common_elements[0]
 
-# 1971. Find if Path Exists in Graph (WIP)
+# 1971. Find if Path Exists in Graph
 class Solution:
     def validPath(self, n: int, edges: List[List[int]], source: int, destination: int) -> bool:
-        if source == destination:
+        if source == destination: 
             return True
+        
+        # Create defaultdict so each key represents all other nodes it's connected to
+        # Ex: 0: [1,2]
+        graph = defaultdict(list)
+        for u, v in edges:
+            graph[u].append(v)
+            graph[v].append(u)
+
+        seen = set()
+        seen.add(source)
+
+        def dfs(i):
+            if i == destination:
+                return True
+            
+            # graph[0] = [1,2] --> loops through 1 and 2
+            for neighbor_node in graph[i]:
+                if neighbor_node not in seen:
+                    seen.add(neighbor_node)
+
+                    # dfs(2) --> returns true since2 = destination
+                    if dfs(neighbor_node):
+                        return True
+
+        return dfs(source)

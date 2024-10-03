@@ -90,6 +90,12 @@ class Solution:
         
         return ' '.join(reversedWords)
 
+# 200. Number of Islands (WIP)
+class Solution:
+    def numIslands(self, grid: List[List[str]]) -> int:
+    # Use recursion DFS
+
+
 # 238. Product of Array Except Self
 class Solution:
     def productExceptSelf(self, nums: List[int]) -> List[int]:

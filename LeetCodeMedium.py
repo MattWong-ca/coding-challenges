@@ -79,6 +79,44 @@ class Solution:
         # we don't want to add it to array so we keep going
         # ???
 
+# 130. Surrounded Regions
+class Solution:
+    def solve(self, board: List[List[str]]) -> None:
+        """
+        Do not return anything, modify board in-place instead.
+        """
+        # i is rows
+        # j is columns
+        def dfs(i,j):
+            if i < 0 or j < 0 or i >= len(board) or j >= len(board[0]) or board[i][j] != 'O':
+                return
+
+            board[i][j] = 'T'
+            dfs(i+1,j)
+            dfs(i,j+1)
+            dfs(i-1,j)
+            dfs(i,j-1)
+
+        # x is columns
+        # y is rows
+        for x in range(len(board[0])):
+            if board[0][x] == 'O':
+                dfs(0, x)
+            if board[len(board)-1][x] == 'O':
+                dfs(len(board) - 1, x)
+        for y in range(len(board)):
+            if board[y][0] == 'O':
+                dfs(y, 0)
+            if board[y][len(board[0])-1] == 'O':
+                dfs(y, len(board[0])-1)
+        
+        for x in range(len(board)):
+            for y in range(len(board[0])):
+                if board[x][y] == 'O':
+                    board[x][y] = 'X'
+                elif board[x][y] == 'T':
+                    board[x][y] = 'O'
+
 # 151. Reverse Words in a String
 class Solution:
     def reverseWords(self, s: str) -> str:

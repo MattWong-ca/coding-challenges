@@ -215,3 +215,40 @@ class Solution:
             result[i] = prefix_products[i] * suffix_products[i]
 
         return result
+
+# 399. Evaluate Division
+class Solution:
+    def calcEquation(self, equations: List[List[str]], values: List[float], queries: List[List[str]]) -> List[float]:
+        # equations = [["a","b"],["b","c"]]
+        # values = [2.0,3.0]
+        # queries = [["a","c"],["b","a"],["a","e"],["a","a"],["x","x"]]
+
+        # Graph of a --> [b,2], which represents a/b = 2
+        graph = collections.defaultdict(list)
+        for i, eq in enumerate(equations):
+            a, b = eq
+            graph[a].append([b, values[i]])
+            graph[b].append([a, 1 / values[i]])
+
+        def bfs(src, target):
+            if src not in graph or target not in graph:
+                return -1
+
+            # visit tracks which nodes have been visited
+            q, visit = deque(), set()
+            q.append([src,1])
+            visit.add(src)
+            while q:
+                n,w = q.popleft()
+                if n == target:
+                    return w
+                
+                # For each neighbor node of current node, 
+                # add it with updated weight
+                for nei, weight in graph[n]:
+                    if nei not in visit:
+                        q.append([nei, w * weight])
+                        visit.add(nei)
+            return -1
+        
+        return [bfs(q[0], q[1]) for q in queries]

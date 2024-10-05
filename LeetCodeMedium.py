@@ -124,15 +124,19 @@ class Solution:
         if not node:
             return None
 
+        # Tracks which nodes have been cloned
         hash_map = {}
 
         def dfs(node):
+            # If already cloned, just return it so no duplicates
             if node in hash_map:
                 return hash_map[node]
             
+            # Clone and add to hash_map
             clone = Node(node.val, [])
             hash_map[node] = clone
 
+            # For each neighbor node in input node, a cloned version is appended to clone node
             for neighbor_node in node.neighbors:
                 clone.neighbors.append(dfs(neighbor_node))
             

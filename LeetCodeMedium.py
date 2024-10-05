@@ -117,6 +117,29 @@ class Solution:
                 elif board[x][y] == 'T':
                     board[x][y] = 'O'
 
+# 133. Clone Graph
+from typing import Optional
+class Solution:
+    def cloneGraph(self, node: Optional['Node']) -> Optional['Node']:
+        if not node:
+            return None
+
+        hash_map = {}
+
+        def dfs(node):
+            if node in hash_map:
+                return hash_map[node]
+            
+            clone = Node(node.val, [])
+            hash_map[node] = clone
+
+            for neighbor_node in node.neighbors:
+                clone.neighbors.append(dfs(neighbor_node))
+            
+            return clone
+        
+        return dfs(node)
+
 # 151. Reverse Words in a String
 class Solution:
     def reverseWords(self, s: str) -> str:

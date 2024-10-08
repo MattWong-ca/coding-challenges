@@ -184,6 +184,44 @@ class Solution:
 
         return island_count
 
+# 207. Course Schedule 
+class Solution:
+    def canFinish(self, numCourses: int, prerequisites: List[List[int]]) -> bool:
+        # 1. Create adjacency list to represent courses
+        # 1 --> [0]
+        # 0 --> [1]
+        graph = defaultdict(list)
+        for a, b in prerequisites:
+            graph[a].append(b)
+        
+        # 2. Represent each node by states
+        UNVISITED = 0
+        VISITING = 1
+        VISITED = 2
+        states = [UNVISITED] * numCourses
+
+        # Returns true if no cyclic path starting at node
+        def dfs(node):
+            if states[node] == VISITED: return True
+            elif states[node] == VISITING: return False
+
+            states[node] = VISITING
+
+            for nei in graph[node]:
+                if not dfs(nei):
+                    return False
+            
+            states[node] = VISITED
+
+            return True
+
+        # 3. For each course, check if a cycle is possible,
+        # if yes, then return false, else return true
+        for i in range(numCourses):
+            if not dfs(i):
+                return False
+        
+        return True
 
 # 238. Product of Array Except Self
 class Solution:

@@ -223,6 +223,36 @@ class Solution:
         
         return True
 
+# 210. Course Schedule II
+class Solution:
+    def findOrder(self, numCourses: int, prerequisites: List[List[int]]) -> List[int]:
+        order = []
+        
+        # 1 --> [0]
+        graph = defaultdict(list)
+        for a,b in prerequisites:
+            graph[a].append(b)
+        
+        UNVISITED, VISITING, VISITED = 0, 1, 2
+        states = [UNVISITED] * numCourses
+
+        def dfs(node):
+            if states[node] == VISITED: return True
+            elif states[node] == VISITING: return False
+            states[node] = VISITING
+            for nei in graph[node]:
+                if not dfs(nei):
+                    return False
+            states[node] = VISITED
+            order.append(node)
+            return True
+
+        for i in range(numCourses):
+            if not dfs(i):
+                return []
+
+        return order
+
 # 238. Product of Array Except Self
 class Solution:
     def productExceptSelf(self, nums: List[int]) -> List[int]:

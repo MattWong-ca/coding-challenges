@@ -320,3 +320,34 @@ class Solution:
             return -1
         
         return [bfs(q[0], q[1]) for q in queries]
+
+# 433. Minimum Genetic Mutation
+class Solution:
+    def minMutation(self, startGene: str, endGene: str, bank: List[str]) -> int:
+        bank = set(bank)
+        if endGene not in bank:
+            return -1
+
+        gene_chars = ['A', 'C', 'G', 'T']
+
+        queue = deque([(startGene, 0)])
+        visited = set([startGene])
+
+        while queue:
+            current_gene, mutation_count = queue.popleft()
+
+            for i in range(len(current_gene)):
+                for char in gene_chars:
+                    if char == current_gene[i]:
+                        continue
+                    
+                    mutated_gene = current_gene[:i] + char + current_gene[i + 1:]
+
+                    if mutated_gene == endGene:
+                        return mutation_count + 1
+                    
+                    if mutated_gene in bank and mutated_gene not in visited:
+                        visited.add(mutated_gene)
+                        queue.append((mutated_gene, mutation_count + 1))
+        
+        return -1

@@ -349,6 +349,23 @@ class Solution:
 
         return -1
 
+# 1684. Count the Number of Consistent Strings
+class Solution:
+    def countConsistentStrings(self, allowed: str, words: List[str]) -> int:
+        allowed_arr = list(allowed)
+        allowed_set = set(allowed_arr)
+        count = 0
+
+        for word in words:
+            arr = list(word)
+            for letter in arr:
+                if letter not in allowed_set:
+                    break
+            else:
+                count += 1        
+        
+        return count
+
 # 1791. Find Center of Star Graph
 class Solution:
     def findCenter(self, edges: List[List[int]]) -> int:

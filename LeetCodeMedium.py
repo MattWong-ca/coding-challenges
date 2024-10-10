@@ -79,6 +79,23 @@ class Solution:
         # we don't want to add it to array so we keep going
         # ???
 
+# 55. Jump Game
+class Solution:
+    def canJump(self, nums: List[int]) -> bool:
+        # Go through array backwards
+        # If the value at the n-1 index can reach the goal,
+        # then that n-1 index should become the goal
+        n = len(nums)
+        goal = nums[n-1]
+
+        for i in range(n-1,-1,-1):
+            step = nums[i]
+
+            if i + step >= goal:
+                goal = i
+
+        return goal == 0
+
 # 130. Surrounded Regions
 class Solution:
     def solve(self, board: List[List[str]]) -> None:

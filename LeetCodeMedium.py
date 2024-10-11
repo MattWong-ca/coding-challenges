@@ -43,6 +43,24 @@ class Solution:
         
         return maxArea
 
+# 45. Jump Game II
+class Solution:
+    def jump(self, nums: List[int]) -> int:
+        smallest = 0
+        n = len(nums)
+        far, end = 0, 0
+
+        for i in range(n-1):
+            # Max jump index
+            if i + nums[i] > far:
+                far = i + nums[i]
+
+            if i == end:
+                end = far
+                smallest += 1
+        
+        return smallest
+
 # 49. Group Anagrams
 class Solution:
     def groupAnagrams(self, strs: List[str]) -> List[List[str]]:

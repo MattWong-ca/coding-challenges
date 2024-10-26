@@ -304,6 +304,13 @@ class Solution:
         t_array.sort()
         return s_array == t_array
 
+# 383. Ransom Note (WIP)
+class Solution:
+    def canConstruct(self, ransomNote: str, magazine: str) -> bool:
+        # Go through ransomNote w/ loop
+        # check hash_map of magazine, if it's there, continue, else break and return false
+        # to handle double letters, remove if found
+
 # 500. Keyboard Row
 class Solution:
     def findWords(self, words: List[str]) -> List[str]:

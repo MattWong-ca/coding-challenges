@@ -304,12 +304,28 @@ class Solution:
         t_array.sort()
         return s_array == t_array
 
-# 383. Ransom Note (WIP)
+# 383. Ransom Note
 class Solution:
     def canConstruct(self, ransomNote: str, magazine: str) -> bool:
-        # Go through ransomNote w/ loop
-        # check hash_map of magazine, if it's there, continue, else break and return false
-        # to handle double letters, remove if found
+        magazine_count = {}
+        for char in magazine:
+            if char in magazine_count:
+                magazine_count[char] += 1
+            else:
+                magazine_count[char] = 1
+
+        ransom_count = {}
+        for char in ransomNote:
+            if char in ransom_count:
+                ransom_count[char] += 1
+            else:
+                ransom_count[char] = 1
+
+        for char, count in ransom_count.items():
+            if magazine_count.get(char, 0) < count:
+                return False
+    
+        return True
 
 # 500. Keyboard Row
 class Solution:

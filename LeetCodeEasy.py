@@ -304,6 +304,13 @@ class Solution:
         t_array.sort()
         return s_array == t_array
 
+# 290. Word Pattern (WIP)
+class Solution:
+    def wordPattern(self, pattern: str, s: str) -> bool:
+        # 1. loop through s, then do mapping from letter --> word in  s
+        # 2. If already exists and doesn't match, return false
+        # 3. Otherwise return true
+
 # 383. Ransom Note
 class Solution:
     def canConstruct(self, ransomNote: str, magazine: str) -> bool:

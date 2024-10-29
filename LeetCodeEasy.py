@@ -304,12 +304,25 @@ class Solution:
         t_array.sort()
         return s_array == t_array
 
-# 290. Word Pattern (WIP)
+# 290. Word Pattern
 class Solution:
     def wordPattern(self, pattern: str, s: str) -> bool:
-        # 1. loop through s, then do mapping from letter --> word in  s
-        # 2. If already exists and doesn't match, return false
-        # 3. Otherwise return true
+        if len(pattern) != len(s.split()):
+            return False
+
+        pattern_to_s = {}
+        s_to_pattern = {}
+
+        for letter, word in zip(pattern,s.split()):
+            if letter in pattern_to_s and pattern_to_s[letter] != word:
+                return False
+            if word in s_to_pattern and s_to_pattern[word] != letter:
+                return False
+
+            pattern_to_s[letter] = word
+            s_to_pattern[word] = letter
+        
+        return True
 
 # 383. Ransom Note
 class Solution:

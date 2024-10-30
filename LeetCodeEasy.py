@@ -298,8 +298,25 @@ class Solution:
 # 219. Contains Duplicate II (WIP)
 class Solution:
     def containsNearbyDuplicate(self, nums: List[int], k: int) -> bool:
-    # 1. Go through entire array, find the ones that are duplicate
-    # 2. For each duplicated number, check indices if it fits abs(i - j) <= k
+        # 1. Go through entire array, find the ones that are duplicate
+        duplicates_array = []
+        for num in nums:
+            if nums.count(num) > 1:
+                duplicates_array.append(num)
+        duplicates = set(duplicates_array)
+        back_to_array = list(duplicates)
+        print(back_to_array)
+        # 2. For each duplicated number, check indices if it fits abs(i - j) <= k
+        for num in back_to_array:
+            indices = []
+            for i, x in enumerate(nums):
+                if x == num:
+                    indices.append(i)
+            print(indices)
+            if indices[len(indices)-1] - indices[0] <= k:
+                return True
+        
+        return False
 
 # 242. Valid Anagram
 class Solution:

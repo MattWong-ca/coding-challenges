@@ -295,6 +295,10 @@ class Solution:
         
         return False
 
+# 219. Contains Duplicate II (WIP)
+class Solution:
+    def containsNearbyDuplicate(self, nums: List[int], k: int) -> bool:
+
 # 242. Valid Anagram
 class Solution:
     def isAnagram(self, s: str, t: str) -> bool:

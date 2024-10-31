@@ -298,23 +298,17 @@ class Solution:
 # 219. Contains Duplicate II (WIP)
 class Solution:
     def containsNearbyDuplicate(self, nums: List[int], k: int) -> bool:
-        # 1. Go through entire array, find the ones that are duplicate
-        duplicates_array = []
-        for num in nums:
-            if nums.count(num) > 1:
-                duplicates_array.append(num)
-        duplicates = set(duplicates_array)
-        back_to_array = list(duplicates)
-        print(back_to_array)
-        # 2. For each duplicated number, check indices if it fits abs(i - j) <= k
-        for num in back_to_array:
-            indices = []
-            for i, x in enumerate(nums):
-                if x == num:
-                    indices.append(i)
-            print(indices)
-            if indices[len(indices)-1] - indices[0] <= k:
+        index_map = {}
+
+        for i, num in enumerate(nums):
+            # If we've seen number X and current index subtract X's index
+            # is less than k, we return true. Otherwise, we add the 
+            # current num + index to index_map. This ensures we're 
+            # always storing the most recent occurrence of num when
+            # comparing differences.
+            if num in index_map and i - index_map[num] <= k:
                 return True
+            index_map[num] = i
         
         return False
 

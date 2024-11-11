@@ -364,6 +364,17 @@ class Solution:
     
         return True
 
+# 392. Is Subsequence
+class Solution:
+    def isSubsequence(self, s: str, t: str) -> bool:
+        if s == t:
+            return True
+        
+        # Go through each string using pointers, if they're equal
+        # increase the counter, return if length of s and counter tracking t is equal
+        # Since it's required they should be in same order,
+        # points
+
 # 500. Keyboard Row
 class Solution:
     def findWords(self, words: List[str]) -> List[str]:

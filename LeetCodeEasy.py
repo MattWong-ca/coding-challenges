@@ -370,10 +370,12 @@ class Solution:
         if s == t:
             return True
         
-        # Go through each string using pointers, if they're equal
-        # increase the counter, return if length of s and counter tracking t is equal
-        # Since it's required they should be in same order,
-        # points
+        i, j = 0, 0
+        while i < len(s) and j < len(t):
+            if s[i] == t[j]:
+                i = i + 1
+            j = j + 1
+        return i == len(s)
 
 # 500. Keyboard Row
 class Solution:

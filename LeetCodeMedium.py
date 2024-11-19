@@ -43,6 +43,16 @@ class Solution:
         
         return maxArea
 
+# 15. 3Sum (WIP)
+class Solution:
+    def threeSum(self, nums: List[int]) -> List[List[int]]:
+        nums.sort()
+
+        for i in range(len(nums)):
+            firstNum = nums[i]
+            leftPointer = i+1
+            rightPointer = len(nums)-1
+
 # 45. Jump Game II
 class Solution:
     def jump(self, nums: List[int]) -> int:

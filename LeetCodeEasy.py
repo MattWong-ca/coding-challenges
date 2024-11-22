@@ -6,6 +6,13 @@ class Solution:
                 if target - nums[j] == nums[i] and i != j:
                     return [i,j]
 
+# 9. Palindrome Number
+class Solution:
+    def isPalindrome(self, x: int) -> bool:
+        x_str = str(x)
+        reverse_x = str(x)[::-1]
+        return x_str == reverse_x
+
 # 14. Longest Common Prefix
 class Solution:
     def longestCommonPrefix(self, strs: List[str]) -> str:

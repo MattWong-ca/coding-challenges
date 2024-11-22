@@ -315,11 +315,9 @@ class Solution:
 # 242. Valid Anagram
 class Solution:
     def isAnagram(self, s: str, t: str) -> bool:
-        s_array = list(s)
-        s_array.sort()
-        t_array = list(t)
-        t_array.sort()
-        return s_array == t_array
+        x = ''.join(sorted(s))
+        y = ''.join(sorted(t))
+        return x == y
 
 # 290. Word Pattern
 class Solution:

@@ -47,11 +47,14 @@ class Solution:
 class Solution:
     def threeSum(self, nums: List[int]) -> List[List[int]]:
         nums.sort()
+        result = []
 
-        for i in range(len(nums)):
+        for i in range(len(nums)-2):
             firstNum = nums[i]
             leftPointer = i+1
             rightPointer = len(nums)-1
+
+            while leftPointer < rightPointer:
 
 # 45. Jump Game II
 class Solution:

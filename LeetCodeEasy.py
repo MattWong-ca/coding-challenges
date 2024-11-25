@@ -189,15 +189,18 @@ class Solution:
 # 121. Best Time to Buy and Sell Stock
 class Solution:
     def maxProfit(self, prices: List[int]) -> int:
+        # Keep track of the lowest price and keep
+        # comparing it to current profit
         min_price = prices[0]
         max_profit = 0
-        
+
         for price in prices:
             if price < min_price:
                 min_price = price
-            elif price - min_price > max_profit:
-                max_profit = price - min_price
-        
+            profit = price - min_price
+            if profit > max_profit:
+                max_profit = profit
+
         return max_profit
 
 # 125. Valid Palindrome

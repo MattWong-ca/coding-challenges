@@ -113,25 +113,13 @@ class Solution:
 
         return square_root
 
-# 70. Climbing Stairs (WORK IN PROGRESS)
+# 70. Climbing Stairs (WORK IN PROGRESS, need to use DP)
 class Solution:
     def climbStairs(self, n: int) -> int:
-        # Base cases
-        if n == 1:
+        if n <= 1:
             return 1
-        if n == 2:
-            return 2
-
-        # return sum of (n-1) + (n-2)
-        first = 1
-        second = 2
-
-        for i in (3, n-1):
-            current = first + second
-            first = second
-            second = current
-
-        return second
+    
+        return self.climbStairs(n - 1) + self.climbStairs(n - 2)
 
 # 100. Same Tree
 class Solution:

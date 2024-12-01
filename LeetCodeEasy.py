@@ -119,11 +119,21 @@ class Solution:
         if n <= 1:
             return 1
     
+        # Ex: n = 5, dp = [0,0,0,0,0,0]
         dp = [0] * (n+1)
         dp[0] = 1
         dp[1] = 1
+        # dp = [1,1,0,0,0,0]
 
+        # Important: the number of steps it takes to level n
+        # is equal to the sum of n-1 and n-2 steps
+
+        # From dp[2] to dp[5]
         for i in range(2,n+1):
+            # dp[2] = 2
+            # dp[3] = 2 + 1 = 3
+            # dp[4] = 3 + 2 = 5
+            # dp[5] = 5 + 3 = 8
             dp[i] = dp[i-1] + dp[i-2]
 
         return dp[n]

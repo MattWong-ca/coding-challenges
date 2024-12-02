@@ -1,27 +1,14 @@
 # 3. Longest Substring Without Repeating Characters
 class Solution:
     def lengthOfLongestSubstring(self, s: str) -> int:
-        if len(s) == 0:
-            return 0
+        char_map = {}
+        start = 0
+        max_len = 0
 
-        maxLen = 1
-        s_chars = list(s)
-
-        for i in range(len(s_chars)):
-            seen = []
-            # print("I: ", i)
-            seen.append(s_chars[i])
-            for j in range(i+1, len(s_chars)):
-                # print(j)
-                if s_chars[j] not in seen:
-                    seen.append(s_chars[j])
-                    if len(seen) > maxLen:
-                        maxLen = len(seen)
-                else:
-                    seen = []
-
-        # print(maxLen)
-        return maxLen
+        for end in len(s):
+            # add it to char_map if not already in or 
+            # if it's already in, update the index, shift the start
+            # and then recount max_len
 
 # 11. Container With Most Water
 class Solution:

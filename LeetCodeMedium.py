@@ -7,9 +7,18 @@ class Solution:
         max_len = 0
 
         for end in range(len(s)):
-            if s[end] in char_map:
+            # If we've already seen the char AND it's in the current window,
+            # then update start to be 1 unit after
+            # the index of the one we've already seen
+
+            # Ex: { a: 0, b: 1, c: 2 }
+            # start was 0, now it's 0 + 1 = 1
+
+            if s[end] in char_map and char_map[s[end]] >= start:
                 start = char_map[s[end]] + 1
-            
+
+            # Add / update the index value in char_map
+            # Ex: for end = 3, a goes from 0 --> 3
             char_map[s[end]] = end
             
             max_len = max(max_len, end-start+1)

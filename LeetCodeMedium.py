@@ -7,11 +7,14 @@ class Solution:
         max_len = 0
 
         for end in range(len(s)):
-            if char_map[end] in char_map:
+            if s[end] in char_map:
+                start = char_map[s[end]] + 1
+            
+            char_map[s[end]] = end
+            
+            max_len = max(max_len, end-start+1)
 
-            # add it to char_map if not already in or 
-            # if it's already in, update the index, shift the start
-            # and then recount max_len
+        return max_len
 
 # 11. Container With Most Water
 class Solution:

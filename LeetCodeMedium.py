@@ -390,6 +390,16 @@ class Solution:
         
         return [bfs(q[0], q[1]) for q in queries]
 
+# 424. Longest Repeating Character Replacement
+class Solution:
+    def characterReplacement(self, s: str, k: int) -> int:
+        # saved = A
+        # iterate through string from index 1
+        # if letter = saved, count++ and keep going
+        # else if k > 0, keep going, then decrement k counter
+
+        # if k = 0, then set current char as new saved, and reset k counter to original k
+
 # 433. Minimum Genetic Mutation
 class Solution:
     def minMutation(self, startGene: str, endGene: str, bank: List[str]) -> int:

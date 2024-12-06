@@ -393,12 +393,12 @@ class Solution:
 # 424. Longest Repeating Character Replacement
 class Solution:
     def characterReplacement(self, s: str, k: int) -> int:
-        # saved = A
-        # iterate through string from index 1
-        # if letter = saved, count++ and keep going
-        # else if k > 0, keep going, then decrement k counter
+        # use sliding window approach
+        # keep track of max length and max freq
+        count = {}
 
-        # if k = 0, then set current char as new saved, and reset k counter to original k
+        # iterate thru string
+        # if window length - max freq > k, start++
 
 # 433. Minimum Genetic Mutation
 class Solution:

@@ -390,15 +390,27 @@ class Solution:
         
         return [bfs(q[0], q[1]) for q in queries]
 
-# 424. Longest Repeating Character Replacement
+# 424. Longest Repeating Character Replacement (WIP)
 class Solution:
     def characterReplacement(self, s: str, k: int) -> int:
         # use sliding window approach
         # keep track of max length and max freq
         count = {}
+        max_length = 0
+        max_frequency = 0
+        start = 0
 
         # iterate thru string
         # if window length - max freq > k, start++
+        for end in range(len(s)):
+            window_length = end - start + 1
+            
+            if window_length - max_frequency > k:
+                start = start + 1
+            
+            max_length = max(max_length, window_length)
+
+        return max_length
 
 # 433. Minimum Genetic Mutation
 class Solution:

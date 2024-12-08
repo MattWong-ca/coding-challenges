@@ -393,22 +393,20 @@ class Solution:
 # 424. Longest Repeating Character Replacement (WIP)
 class Solution:
     def characterReplacement(self, s: str, k: int) -> int:
-        # use sliding window approach
-        # keep track of max length and max freq
-        count = {}
+        count = defaultdict(int)
         max_length = 0
         max_frequency = 0
         start = 0
 
-        # iterate thru string
-        # if window length - max freq > k, start++
         for end in range(len(s)):
-            window_length = end - start + 1
+            count[s[end]] += 1
+            max_frequency = max(max_frequency, count[s[end]])
             
-            if window_length - max_frequency > k:
-                start = start + 1
+            if (end - start + 1) - max_frequency > k:
+                count[s[start]] -= 1
+                start += 1
             
-            max_length = max(max_length, window_length)
+            max_length = max(max_length, end - start + 1)
 
         return max_length
 

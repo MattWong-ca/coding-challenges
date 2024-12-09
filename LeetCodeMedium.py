@@ -417,7 +417,7 @@ class Solution:
 # window length - max_freq = 5 - 3 = 2, which gives us the number of non-same letters (eg. B)
 # in the window. We want to compare how many non A's there are to k. If there's more non A's 
 # than k, we won't be able to substitue all of them, hence needing to enter if block and shift
-# window's start 1 unit right
+# window's start 1 unit right.
 
 # 433. Minimum Genetic Mutation
 class Solution:

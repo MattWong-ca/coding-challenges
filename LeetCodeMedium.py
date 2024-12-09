@@ -390,25 +390,34 @@ class Solution:
         
         return [bfs(q[0], q[1]) for q in queries]
 
-# 424. Longest Repeating Character Replacement (WIP)
+# 424. Longest Repeating Character Replacement
 class Solution:
     def characterReplacement(self, s: str, k: int) -> int:
+        # Ex: { A: 1, B: 1 }
         count = defaultdict(int)
         max_length = 0
         max_frequency = 0
         start = 0
 
+        # When we get to end = 3, count = { A: 2, B: 1 }
         for end in range(len(s)):
-            count[s[end]] += 1
-            max_frequency = max(max_frequency, count[s[end]])
+            count[s[end]] += 1 # count = { A: 2, B: 2 }
+            max_frequency = max(max_frequency, count[s[end]]) # max_frequency = 2
             
-            if (end - start + 1) - max_frequency > k:
+            # The window length subtract max_frequency: number of non-same letters in current window
+            if (end - start + 1) - max_frequency > k: # (3-0+1) - 2 = 2, 2 > 2 is false
                 count[s[start]] -= 1
                 start += 1
             
-            max_length = max(max_length, end - start + 1)
+            max_length = max(max_length, end - start + 1) # max_length = 4
 
         return max_length
+
+# Notes: for example in AABAB, the window length = 5, and max_freq = 3. So we calculate
+# window length - max_freq = 5 - 3 = 2, which gives us the number of non-same letters (eg. B)
+# in the window. We want to compare how many non A's there are to k. If there's more non A's 
+# than k, we won't be able to substitue all of them, hence needing to enter if block and shift
+# window's start 1 unit right
 
 # 433. Minimum Genetic Mutation
 class Solution:

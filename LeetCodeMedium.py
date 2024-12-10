@@ -25,6 +25,23 @@ class Solution:
 
         return max_len
 
+# 5. Longest Palindromic Substring (WIP)
+class Solution:
+    def longestPalindrome(self, s: str) -> str:
+        # from index 1, go thru string and see if the 2 letters beside the current char are equal
+        # if yes, keep checking neighbours
+        if len(s) == 1:
+            return s
+        if len(s) == 2 and s[0] == s[1]:
+            return s
+        if len(s) == 2 and s[0] != s[1]:
+            return s[0]
+
+        for i in range(1,len(s)):
+            while s[i-1] > 0 and s[i+1] < len(s) and s[i-1] == s[i+1]:
+                left = left - 1
+                right = right + 1
+
 # 11. Container With Most Water
 class Solution:
     def maxArea(self, height: List[int]) -> int:

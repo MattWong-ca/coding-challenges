@@ -37,8 +37,18 @@ class Solution:
         if len(s) == 2 and s[0] != s[1]:
             return s[0]
 
+        def expand_from_center(left: int, right: int) --> str:
+            while left > 0 and right < len(s) and s[left] == s[right]:
+                left = left - 1
+                right = right + 1
+            
+            return s[left:right]
+
         for i in range(1,len(s)):
-            while s[i-1] > 0 and s[i+1] < len(s) and s[i-1] == s[i+1]:
+            # Check for odd palindromes like aba
+            left = i-1
+            right = i+1
+            while left > 0 and right < len(s) and s[left] == s[right]:
                 left = left - 1
                 right = right + 1
 

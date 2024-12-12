@@ -37,20 +37,19 @@ class Solution:
         if len(s) == 2 and s[0] != s[1]:
             return s[0]
 
-        def expand_from_center(left: int, right: int) --> str:
+        longest_palindrome = ''
+        
+        def expand_from_center(left: int, right: int):
             while left > 0 and right < len(s) and s[left] == s[right]:
                 left = left - 1
                 right = right + 1
             
-            return s[left:right]
+            return s[left+1:right]
 
         for i in range(1,len(s)):
             # Check for odd palindromes like aba
-            left = i-1
-            right = i+1
-            while left > 0 and right < len(s) and s[left] == s[right]:
-                left = left - 1
-                right = right + 1
+            longest_odd = expand_from_center(i-1,i+1)
+            print(longest_odd)
 
 # 11. Container With Most Water
 class Solution:

@@ -32,24 +32,30 @@ class Solution:
         # if yes, keep checking neighbours
         if len(s) == 1:
             return s
-        if len(s) == 2 and s[0] == s[1]:
-            return s
-        if len(s) == 2 and s[0] != s[1]:
-            return s[0]
+        # if len(s) == 2 and s[0] == s[1]:
+        #     return s
+        # if len(s) == 2 and s[0] != s[1]:
+        #     return s[0]
 
         longest_palindrome = ''
         
         def expand_from_center(left: int, right: int):
-            while left > 0 and right < len(s) and s[left] == s[right]:
+            while left >= 0 and right < len(s) and s[left] == s[right]:
                 left = left - 1
                 right = right + 1
             
             return s[left+1:right]
 
-        for i in range(1,len(s)):
+        for i in range(len(s)):
             # Check for odd palindromes like aba
-            longest_odd = expand_from_center(i-1,i+1)
-            print(longest_odd)
+            longest_odd = expand_from_center(i,i)
+            print('O: ', longest_odd)
+
+            longest_even = expand_from_center(i,i+1)
+            print('E: ', longest_even)
+
+        
+        return longest_palindrome
 
 # 11. Container With Most Water
 class Solution:

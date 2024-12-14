@@ -32,14 +32,10 @@ class Solution:
         # if yes, keep checking neighbours
         if len(s) == 1:
             return s
-        # if len(s) == 2 and s[0] == s[1]:
-        #     return s
-        # if len(s) == 2 and s[0] != s[1]:
-        #     return s[0]
 
         longest_palindrome = ''
         
-        def expand_from_center(left: int, right: int):
+        def expand_from_center(left: int, right: int) -> str:
             while left >= 0 and right < len(s) and s[left] == s[right]:
                 left = left - 1
                 right = right + 1
@@ -53,6 +49,11 @@ class Solution:
 
             longest_even = expand_from_center(i,i+1)
             print('E: ', longest_even)
+
+            if len(longest_odd) > len(longest_palindrome):
+                longest_palindrome = longest_odd
+            if len(longest_even) > len(longest_palindrome):
+                longest_palindrome = longest_even
 
         
         return longest_palindrome

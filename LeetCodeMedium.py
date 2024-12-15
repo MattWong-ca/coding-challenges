@@ -36,7 +36,10 @@ class Solution:
 
         longest_palindrome = ''
         
-        # Fxn that returns the longest palindrome at specific char. 
+        # Fxn that returns the longest palindrome at specific char. As long as the
+        # char is within s, we keep expanding. Ex: if s = 'aba', then at b, the loop
+        # will stop at -1 and 2, which is why we return s[0:2]. In other words, the 
+        # loop stops at one interval wider than what should be returned.
         def expand_from_center(left: int, right: int) -> str:
             while left >= 0 and right < len(s) and s[left] == s[right]:
                 left = left - 1

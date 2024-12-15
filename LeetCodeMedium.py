@@ -28,13 +28,15 @@ class Solution:
 # 5. Longest Palindromic Substring (WIP)
 class Solution:
     def longestPalindrome(self, s: str) -> str:
-        # from index 1, go thru string and see if the 2 letters beside the current char are equal
-        # if yes, keep checking neighbours
-        if len(s) == 1:
+        # Go through s and see if the 2 letters beside the current char are equal,
+        # or if the current char and the one after are the same. Ex: aba or bb.
+        # If yes, keep checking neighbours.
+        if len(s) <= 1:
             return s
 
         longest_palindrome = ''
         
+        # Fxn that returns the longest palindrome at specific char. 
         def expand_from_center(left: int, right: int) -> str:
             while left >= 0 and right < len(s) and s[left] == s[right]:
                 left = left - 1

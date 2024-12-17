@@ -25,7 +25,7 @@ class Solution:
 
         return max_len
 
-# 5. Longest Palindromic Substring (WIP)
+# 5. Longest Palindromic Substring
 class Solution:
     def longestPalindrome(self, s: str) -> str:
         # Go through s and see if the 2 letters beside the current char are equal,
@@ -48,19 +48,16 @@ class Solution:
             return s[left+1:right]
 
         for i in range(len(s)):
-            # Check for odd palindromes like aba
+            # Check for longest odd + even palindromes at each char,
+            # if longer then update longest_palindrome
             longest_odd = expand_from_center(i,i)
-            print('O: ', longest_odd)
-
             longest_even = expand_from_center(i,i+1)
-            print('E: ', longest_even)
 
             if len(longest_odd) > len(longest_palindrome):
                 longest_palindrome = longest_odd
             if len(longest_even) > len(longest_palindrome):
                 longest_palindrome = longest_even
 
-        
         return longest_palindrome
 
 # 11. Container With Most Water

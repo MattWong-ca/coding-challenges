@@ -427,6 +427,44 @@ class Solution:
 
         return one_row_words
 
+# 506. Relative Ranks
+class Solution:
+    def findRelativeRanks(self, score: List[int]) -> List[str]:
+        # turn into tuple
+        tuple_array = []
+        range_ = range(len(score))
+        for i in range_:
+            score_tuple = (score[i], i+1)
+            tuple_array.append(score_tuple)
+        
+        sorted_data = sorted(tuple_array, key=lambda x: x[0], reverse=True)
+        print(sorted_data)
+        return_array = []
+        for data in score:
+            result = [t for t in sorted_data if t[0] == data][0]
+            print(result)
+            return_array.append(sorted_data.index(result)+1)
+            
+        print(return_array)
+        # sort by score[i]
+        # 10 9 8 4 3
+        # 5 4 3 2 1 
+
+        # turn 5 4 3 2 1 values into Gold Silver Bronze 4 5
+        final_array = []
+        for value in return_array:
+            if value == 1:
+                final_array.append('Gold Medal')
+            elif value == 2:
+                final_array.append('Silver Medal')
+            elif value == 3:
+                final_array.append('Bronze Medal')
+            else:
+                final_array.append(str(value))
+        print(final_array)
+        # create new array using original score list for right order
+        return final_array
+
 # 997. Find the Town Judge
 class Solution:
     def findJudge(self, n: int, trust: List[List[int]]) -> int:

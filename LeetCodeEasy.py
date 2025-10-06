@@ -1,10 +1,21 @@
 # 1. Two Sum
 class Solution:
+    # a) Nested for loop approach, iterate through array. For every num make sure it's not the same index and if target minus num of inner loop is equal to num of outer loop, return indices.
     def twoSum(self, nums: List[int], target: int) -> List[int]:
         for i in range(len(nums)):
             for j in range(len(nums)):
                 if target - nums[j] == nums[i] and i != j:
                     return [i,j]
+    # b) Create empty hash map, calculate complement (target - num) for each num, and if not already in hash map add it.
+    def twoSumHashMapApproach(self, nums: List[int], target: int) -> List[int]:
+        num_to_index = {}
+        for i, num in enumerate(nums):
+            complement = target - num
+            if complement in num_to_index:
+                return [num_to_index[complement],i]
+            else:
+                num_to_index[num] = i
+        return []
 
 # 9. Palindrome Number
 class Solution:

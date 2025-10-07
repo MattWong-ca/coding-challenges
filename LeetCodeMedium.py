@@ -1,5 +1,6 @@
 # 3. Longest Substring Without Repeating Characters
 class Solution:
+    # a) Sliding window
     def lengthOfLongestSubstring(self, s: str) -> int:
         # { a: 0 }
         char_map = {}
@@ -24,6 +25,8 @@ class Solution:
             max_len = max(max_len, end-start+1)
 
         return max_len
+
+    # b) Nested for loop
 
 # 5. Longest Palindromic Substring
 class Solution:

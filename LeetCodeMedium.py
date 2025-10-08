@@ -27,6 +27,25 @@ class Solution:
         return max_len
 
     # b) Nested for loop
+    def lengthOfLongestSubstringBruteForce(self, s: str) -> int:
+        max_len = 0
+        for i in range(len(s)):
+            seen = []
+            counter = 0
+            print("")
+            for j in range(i, len(s)):
+                # if s[i] == s[j]:
+                #     break
+                if s[j] in seen:
+                    break
+                if s[j] not in seen:
+                    print(s[j])
+                    seen.append(s[j])
+                    counter = counter + 1
+                    if counter > max_len:
+                        max_len = counter
+                    print("Max len", max_len)
+        return max_len
 
 # 5. Longest Palindromic Substring
 class Solution:

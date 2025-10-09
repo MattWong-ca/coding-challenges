@@ -310,6 +310,8 @@ class Solution:
         return prev
 
 # 217. Contains Duplicate
+# a) Iterate through nums, if num is in seen set return true, else add num to seen set
+# b) Compare len(set(nums)) and len(nums) and return true if they're not equal
 class Solution:
     def containsDuplicate(self, nums: List[int]) -> bool:
         seen = set()
@@ -320,6 +322,9 @@ class Solution:
                 seen.add(num)
         
         return False
+    # Alternative
+    def containsDuplicateOneLiner(self, nums: List[int]) -> bool:
+        return len(set(nums)) != len(nums)
 
 # 219. Contains Duplicate II (WIP)
 class Solution:

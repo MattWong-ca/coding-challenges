@@ -7,6 +7,7 @@ class Solution:
                 if target - nums[j] == nums[i] and i != j:
                     return [i,j]
     # b) Create empty hash map, calculate complement (target - num) for each num, and if not already in hash map add it.
+    # We iterate through nums array, and save every num to a seen array. At each num, we check if any of the previous nums we've seen equal target - num
     def twoSumHashMapApproach(self, nums: List[int], target: int) -> List[int]:
         num_to_index = {}
         for i, num in enumerate(nums):

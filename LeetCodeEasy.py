@@ -345,8 +345,23 @@ class Solution:
         return False
 
 # 242. Valid Anagram
+# a) Return false if not same length, for loop to create defaultdict of str s, then for every letter in t: if letter isn't in defaultdict or it's value is 0, immediately return false, else decrement by 1 
+# b) Sort each of the strings, then return if they're equal
+from collections import defaultdict
 class Solution:
     def isAnagram(self, s: str, t: str) -> bool:
+        if len(s) != len(t):
+            return False
+        s_chars = defaultdict(int)
+        for char in s:
+            s_chars[char] += 1
+        for letter in t:
+            if letter not in s_chars or s_chars[letter] == 0:
+                return False
+            s_chars[letter] -= 1
+        return True
+    
+    def isAnagramSortFirst(self, s: str, t: str) -> bool:
         x = ''.join(sorted(s))
         y = ''.join(sorted(t))
         return x == y

@@ -521,3 +521,16 @@ class Solution:
                         queue.append((mutated_gene, mutation_count + 1))
         
         return -1
+
+# 442. Find All Duplicates in an Array
+class Solution:
+    def findDuplicates(self, nums: List[int]) -> List[int]:
+        seen = set()
+        duplicates = set()
+        for num in nums:
+            if num not in seen:
+                seen.add(num)
+            else:
+                duplicates.add(num)
+
+        return list(duplicates)

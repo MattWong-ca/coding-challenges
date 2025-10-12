@@ -415,6 +415,16 @@ class Solution:
 
         return result
 
+# 347. Top K Frequent Elements
+from collections import defaultdict
+class Solution:
+    def topKFrequent(self, nums: List[int], k: int) -> List[int]:
+        nums_count = defaultdict(int)
+        for i in range(len(nums)):
+            nums_count[nums[i]] += 1
+        sorted_result = sorted(nums_count.keys(), key=nums_count.get, reverse=True)
+        return sorted_result[:k]
+
 # 399. Evaluate Division
 class Solution:
     def calcEquation(self, equations: List[List[str]], values: List[float], queries: List[List[str]]) -> List[float]:

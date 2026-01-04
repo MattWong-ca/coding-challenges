@@ -534,3 +534,28 @@ class Solution:
                 duplicates.add(num)
 
         return list(duplicates)
+
+# 1268. Search Suggestions System
+class Solution:
+    def suggestedProducts(self, products: List[str], searchWord: str) -> List[List[str]]:
+        res = []
+        l = 0
+        r = len(products)
+
+        # 1. Sort products lexicographically
+        products.sort()
+
+        # 2. Iterate through searchWord, get prefix
+        for i in range(1, len(searchWord)+1):
+            prefix = searchWord[:i]
+
+            while l < r and not products[l].startswith(prefix):
+                l = l + 1
+            
+            while l < r and not products[r-1].startswith(prefix):
+                r = r - 1
+        
+            # 3. Get min of (strings between l and r, or first 3)
+            res.append(products[l : min(l + 3, r)])
+
+        return res

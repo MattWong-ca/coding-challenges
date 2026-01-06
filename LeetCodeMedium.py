@@ -559,3 +559,37 @@ class Solution:
             res.append(products[l : min(l + 3, r)])
 
         return res
+
+# 1834. Single-Threaded CPU
+import heapq
+
+class Solution:
+    def getOrder(self, tasks: List[List[int]]) -> List[int]:      
+        for i, task in enumerate(tasks):
+            task.append(i)
+        tasks.sort(key=lambda x: x[0])
+
+        time = 0
+        i = 0
+        heap = []
+        res = []
+        
+        while(len(res) < len(tasks)):
+            
+            # 1. Add all tasks that have arrived by current time
+            while i < len(tasks) and tasks[i][0] <= time:
+                enqueue, process, idx = tasks[i]
+                heapq.heappush(heap, (process, idx))
+                i += 1
+
+            # 2. If CPU is idle and no available tasks
+            if not heap:
+                time = tasks[i][0]
+                continue
+
+            # 3. Run best available task
+            processTime, idx = heapq.heappop(heap)
+            res.append(idx)
+            time += processTime
+
+        return res

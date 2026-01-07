@@ -608,36 +608,32 @@ class Bank:
     # 1 --> 10
     # 2 --> 100
     # 3 --> 20
-    balance_ = []
 
     def __init__(self, balance: List[int]):
-        self.balance_ = balance
+        self.balance = balance
+    
+    def isValid(self, account: int) -> bool:
+        return 1 <= account <= len(self.balance)
 
     def transfer(self, account1: int, account2: int, money: int) -> bool:
-        if account1 > len(self.balance_) or account2 > len(self.balance_):
+        if not self.isValid(account1) or not self.isValid(account2):
             return False
-        
-        if money <= self.balance_[account1-1]:
-            self.balance_[account1-1] -= money
-            self.balance_[account2-1] += money
+        if money <= self.balance[account1-1]:
+            self.balance[account1-1] -= money
+            self.balance[account2-1] += money
             return True
-        
         return False
 
-
     def deposit(self, account: int, money: int) -> bool:
-        if account > len(self.balance_):
+        if not self.isValid(account):
             return False
-        
-        self.balance_[account-1] += money
+        self.balance[account-1] += money
         return True
 
     def withdraw(self, account: int, money: int) -> bool:
-        if account > len(self.balance_):
+        if not self.isValid(account):
             return False
-
-        if money <= self.balance_[account-1]:
-            self.balance_[account-1] -= money
+        if money <= self.balance[account-1]:
+            self.balance[account-1] -= money
             return True
-        else:
-            return False
+        return False

@@ -564,30 +564,38 @@ class Solution:
 import heapq
 
 class Solution:
-    def getOrder(self, tasks: List[List[int]]) -> List[int]:      
+    def getOrder(self, tasks: List[List[int]]) -> List[int]:
+        # Add index to every task item, then sort by enqueueTime
         for i, task in enumerate(tasks):
             task.append(i)
         tasks.sort(key=lambda x: x[0])
 
-        time = 0
-        i = 0
-        heap = []
-        res = []
+        # time --> time we're at, i --> task we're at
+        # heap --> CPU, res --> arr of indices we're storing
+        time, i = 0, 0
+        heap, res = [], []
         
+        # Keep iterating until we get an array of indices w/ same length as tasks
         while(len(res) < len(tasks)):
             
             # 1. Add all tasks that have arrived by current time
+            # If there's still tasks left + the time is past its enqueueTime, 
+            # then add task to heap (CPU), then increment task
             while i < len(tasks) and tasks[i][0] <= time:
                 enqueue, process, idx = tasks[i]
                 heapq.heappush(heap, (process, idx))
                 i += 1
 
             # 2. If CPU is idle and no available tasks
+            # Set time to current task's enqueueTime and continue
             if not heap:
                 time = tasks[i][0]
                 continue
 
             # 3. Run best available task
+            # Remove best available task by processingTime, then add its index to res
+            # Heap contains tuples (processTime, idx) --> pops by smaller processTime, idx if tie 
+            # Increment time to be after this task's processingTime
             processTime, idx = heapq.heappop(heap)
             res.append(idx)
             time += processTime

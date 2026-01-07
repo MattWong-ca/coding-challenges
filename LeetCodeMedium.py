@@ -601,3 +601,43 @@ class Solution:
             time += processTime
 
         return res
+
+# 2043. Simple Bank System
+class Bank:
+    # balance = [10, 100, 20, 50, 30]
+    # 1 --> 10
+    # 2 --> 100
+    # 3 --> 20
+    balance_ = []
+
+    def __init__(self, balance: List[int]):
+        self.balance_ = balance
+
+    def transfer(self, account1: int, account2: int, money: int) -> bool:
+        if account1 > len(self.balance_) or account2 > len(self.balance_):
+            return False
+        
+        if money <= self.balance_[account1-1]:
+            self.balance_[account1-1] -= money
+            self.balance_[account2-1] += money
+            return True
+        
+        return False
+
+
+    def deposit(self, account: int, money: int) -> bool:
+        if account > len(self.balance_):
+            return False
+        
+        self.balance_[account-1] += money
+        return True
+
+    def withdraw(self, account: int, money: int) -> bool:
+        if account > len(self.balance_):
+            return False
+
+        if money <= self.balance_[account-1]:
+            self.balance_[account-1] -= money
+            return True
+        else:
+            return False

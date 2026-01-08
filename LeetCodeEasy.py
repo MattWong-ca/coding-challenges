@@ -562,6 +562,32 @@ class Solution:
         
         return count
 
+# 1790. Check if One String Swap Can Make Strings Equal
+class Solution:
+    def areAlmostEqual(self, s1: str, s2: str) -> bool:
+        # return false if they're different lengths
+        if len(s1) != len(s2):
+            return False
+
+        # return true if they're the same string
+        if s1 == s2:
+            return True
+
+        mismatches = []
+
+        # add the indices of all mismatches - ex. in 'bank' and 'kanb', it would be [0,3]
+        for i in range(len(s1)):
+            if s1[i] != s2[i]:
+                mismatches.append(i)
+        
+        # if only 1 mismatch, a swap can't make s1 + s2 equal
+        # if more than 2 mismatches, 1 swap can't make s1 + s2 equal
+        if len(mismatches) != 2:
+            return False
+
+        # if 'b' = 'b' and 'k' = 'k' 
+        return s1[mismatches[0]] == s2[mismatches[1]] and s1[mismatches[1]] == s2[mismatches[0]]
+
 # 1791. Find Center of Star Graph
 class Solution:
     def findCenter(self, edges: List[List[int]]) -> int:

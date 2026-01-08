@@ -535,6 +535,37 @@ class Solution:
 
         return list(duplicates)
 
+# 875. Koko Eating Bananas
+class Solution:
+    def minEatingSpeed(self, piles: List[int], h: int) -> int:
+        # Set pointers so binary search range is [ 1 : max(piles) ]
+        l, r = 1, max(piles)
+        res = r
+
+        # k is from 1 --> max(piles), so we use midpoint value and shift l/r pointers
+        # to efficiently iterate through all possible k values
+        while l <= r:
+            k = (l + r) // 2
+            hours = 0
+
+            # For current k value, count total hours
+            for pile in piles:
+                hours += math.ceil(pile/k)
+            
+            # If hours is greater than h, k is too small, so we shift left pointer right
+            if hours > h:
+                l = k + 1
+
+            # If hours is less than or equal to h, it works, 
+            # and k can potentially be new res value 
+            # Either way, shift right pointer left to see if there's a smaller possible k
+            if hours <= h:
+                if k < res:
+                    res = k
+                r = k - 1
+
+        return res
+
 # 1268. Search Suggestions System
 class Solution:
     def suggestedProducts(self, products: List[str], searchWord: str) -> List[List[str]]:

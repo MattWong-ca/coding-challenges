@@ -190,6 +190,24 @@ class Solution:
 
         return goal == 0
 
+# 124. Binary Tree Maximum Path Sum
+class Solution:
+    def maxPathSum(self, root: Optional[TreeNode]) -> int:
+        self.max_sum = float("-inf")
+
+        def dfs(node):
+            if not node:
+                return 0
+        
+        # Best downward path from left and right
+
+        # Case "^": path peaks at this node
+
+        # Case "/" or "\": return one arm upward
+
+        dfs(root)
+        return max_sum
+
 # 130. Surrounded Regions
 class Solution:
     def solve(self, board: List[List[str]]) -> None:

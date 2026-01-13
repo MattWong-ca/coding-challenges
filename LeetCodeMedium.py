@@ -415,6 +415,41 @@ class Solution:
 
         return result
 
+# 286. Walls and Gates
+from collections import deque
+class Solution:
+    def wallsAndGates(self, rooms: List[List[Int]]) -> None:
+        # Initialize rows/cols, visited set, and BFS queue
+        ROWS, COLS = len(rooms), len(rooms[0])
+        visited = set()
+        q = deque()
+        
+        # addRoom helper fxn that checks for edge cases or if room is a wall, then adds room to visited set + queue
+        def addRoom(r,c): 
+            if r < 0 or c < 0 or r == ROWS or c == COLS or (r,c) in visited or rooms[r][c] == - 1:
+                return
+            visited.add((r,c))
+            q.append([r,c])
+        
+        # Nested for loop to add all gates to visited set + queue
+        for r in range(ROWS):
+            for c in range(COLS):
+                if rooms[r][c] == 0:
+                    visited.add((r,c))
+                    q.append([r,c])
+
+        # BFS - while q isn't empty, iterate through it, and set curr rooms position = dist. Then increment dist.
+        dist = 0
+        while q:
+            for i in range(len(q)):
+                r,c = q.popleft()
+                rooms[r][c] = dist
+                addRoom(r+1,c)
+                addRoom(r-1,c)
+                addRoom(r,c+1)
+                addRoom(r,c-1)
+            dist += 1
+        
 # 347. Top K Frequent Elements
 from collections import defaultdict
 class Solution:

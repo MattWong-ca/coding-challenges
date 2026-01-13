@@ -53,3 +53,31 @@ class Solution:
 
         # Return max value in mapping
         return max(mapping.values())
+
+# 1235. Maximum Profit in Job Scheduling
+class Solution:
+    def jobScheduling(self, startTime: List[int], endTime: List[int], profit: List[int]) -> int:
+        # Merge the 3 lists + sort them by startTime, initialize empty cache
+        intervals = sorted(zip(startTime, endTime, profit))
+        cache = {}
+
+        # DFS
+        def dfs(i):
+            # Base case - no more intervals afterwards
+            if i == len(intervals):
+                return 0
+            if i in cache:
+                return cache[i]
+
+            # What if we don't include
+            res = dfs(i + 1)
+
+            # What if we include
+            # j is the next available job that doesn't conflict
+            j = bisect.bisect(intervals, (intervals[i][1], -1, -1))
+            # We store the greater profit between not including vs including
+            cache[i] = res = max(res, intervals[i][2] + dfs(j))
+
+            return res
+
+        return dfs(0)

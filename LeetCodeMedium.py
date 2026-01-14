@@ -601,6 +601,35 @@ class Solution:
 
         return res
 
+# 1169. Invalid Transactions
+class Solution:
+    def invalidTransactions(self, transactions: List[str]) -> List[str]:
+        # Turn transactions list --> list of lists
+        txns_list = []
+        for t in transactions:
+            name, time, amount, city = t.split(',')
+            txns_list.append([name, int(time), int(amount), city])
+
+        # List of markers for returning invalid txns
+        invalid = [False] * len(txns_list)
+        
+        # Nested for loop, compares all txns and marks invalid ones as True
+        n = len(txns_list)
+        for i in range(n):
+            if txns_list[i][2] > 1000:
+                    invalid[i] = True
+            
+            for j in range(i+1, n):
+                time_diff = abs(txns_list[i][1] - txns_list[j][1])
+
+                # If names are same, cities are different, time_diff is within 60min,
+                # we set it as invalid
+                if txns_list[i][0] == txns_list[j][0] and txns_list[i][3] != txns_list[j][3] and time_diff <= 60:
+                    invalid[i] = True
+                    invalid[j] = True
+
+        return [ ",".join(map(str, txns_list[i])) for i in range(n) if invalid[i] ]
+
 # 1268. Search Suggestions System
 class Solution:
     def suggestedProducts(self, products: List[str], searchWord: str) -> List[List[str]]:
